@@ -72,6 +72,13 @@ The following options are available:
 - `-p, --preset`: Choose one of the installed preset: `classic`, `extended`, `unicode_blocks`, `braille`.
 - `-c, --charset`: Provide a custom charset of any length (use quotes to include space as a character).
 
+## Interactive terminal program
+Edit the configuration constants at the top of `asciify_processor.py`, then run it from the repository root and paste the image path when prompted:
+```
+python asciify_processor.py
+```
+All conversion settings are controlled in the script: color mode, edge detection, output dimensions, aspect-ratio handling, downsampling factor, edge blur and thresholds, character set, output format, and output path. Set `CHARSET_PRESET` to `default`, `classic`, `extended`, `braille`, or `unicode_blocks`; use `custom` with `CUSTOM_CHARSET` for your own characters. The image path is the only value entered in the terminal. `OUTPUT_FORMAT = "html"` saves colored ASCII art as an HTML file that can be opened in a browser. ANSI escape sequences in a `.txt` or `.ans` file are terminal control codes, so many text editors display them instead of rendering the color. HTML and PNG output require `OUTPUT_PATH`; PNG does not support edge detection.
+
 ### Details
 The different factors available are meant for different scenarios:
 - `in_terminal` allows to keep the output inside the terminal keeping aspect ratio;

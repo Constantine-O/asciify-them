@@ -172,6 +172,17 @@ class TestRenderer:
         renderer.draw_char_bw([0, 0, 250], line)
         assert len(line) == 1
 
+    def test_draw_char_bw_supports_long_charsets(self):
+        """Test brightness mapping for every value with a longer charset."""
+        charset = list("abcdefghijklmnopqrstuvwxyz1234")
+        renderer = Renderer(color_mode="bw", charset=charset)
+
+        for brightness in range(256):
+            line = []
+            renderer.draw_char_bw([0, 0, brightness], line)
+            assert len(line) == 1
+            assert line[0][-1] in charset
+
     def test_different_brightness_levels_produce_different_chars(self):
         """Test that different brightness levels produce different characters."""
         renderer = Renderer(color_mode="bw")
